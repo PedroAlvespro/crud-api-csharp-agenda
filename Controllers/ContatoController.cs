@@ -8,6 +8,7 @@ namespace TRIMAPAPI.Controllers
     public class ContatoController : ControllerBase
     {
         [HttpGet("{id:int}")]
+        /*assíncrona, pois consumirá um bd, tendo em vista a finalidade da API*/
         public async Task<ActionResult> Get([FromServices] GetContatoService service, int id)
         {
             try

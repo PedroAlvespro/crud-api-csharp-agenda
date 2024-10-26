@@ -17,8 +17,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
-builder.Services.AddScoped<CreateContatoService>();
-builder.Services.AddScoped<GetContatoService>();
+builder.Services.AddScoped<CreateContatoService>(); /*passando diretamente, para 
+que seja terceirizado para ser tratado pelo container*/
+builder.Services.AddScoped<GetContatoService>(); //DI - Adicionando no Scopo novas instâncias de Contato
+
 
 var app = builder.Build();
 
