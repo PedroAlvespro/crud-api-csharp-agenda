@@ -25,5 +25,11 @@ namespace TRIMAPAPI.Repositories
             var contato = await _context.Contatos.FindAsync(id);
             return contato;
         }
+
+        public async Task Delete(Contato contato)
+        {
+             _context.Contatos.Remove(contato);
+            await _context.SaveChangesAsync();
+        }
     }
 }
