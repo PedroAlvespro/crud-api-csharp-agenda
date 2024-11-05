@@ -44,5 +44,18 @@ namespace TRIMAPAPI.Services
 
             return true;
         }
+    public async Task<Contato> NomeGet(string nome)
+    {
+        if (string.IsNullOrWhiteSpace(nome))
+        {
+            throw new ArgumentException("O nome não pode ser nulo ou vazio.", nameof(nome));
+        }
+        var contato = await _repository.GetByNameAsync(nome);
+        if (contato == null)
+        {
+            throw new KeyNotFoundException($"Contato com o nome '{nome}' não encontrado.");
+        }
+        return contato; 
+    }
     }
 }

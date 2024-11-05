@@ -6,6 +6,8 @@ using TRIMAPAPI.Services;
 
 namespace TRIMAPAPI.Controllers
 {
+    /*AQUI FICA A LÓGICA, OS COMPORTAMENTOS, AS FUNÇÕES QUE CADA ENDPOINT IRÁ EXECUTAR, SUA ROTA E SUA REQUISIÇÃO*/
+
     [ApiController]
     [Route("contato")]
     public class ContatoController : ControllerBase
@@ -39,6 +41,19 @@ namespace TRIMAPAPI.Controllers
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex);
             }
+        }
+
+        [HttpGet("ObterPorNome")]
+        public async Task<IActionResult> NomeGet(string nome)
+        {
+            var contato = await _service.NomeGet(nome);
+
+            if (contato == null)
+            {
+                return NotFound(); // Retorna 404 se o contato não for encontrado
+            }
+
+            return Ok(contato); // Retorna 200 e o contato encontrado
         }
 
         [HttpPost("{nome}/{telefone}")]

@@ -16,5 +16,6 @@ namespace Context // Namespace onde está sua classe AgendaContext
 
         // DbSet para a entidade Contato
         public DbSet<Contato> Contatos{ get; set; } //entidade -> classe do c# e bd ao mesmo tempo
+        /*AQUI FICA A CONEXÃP COM O BD, A PONTE ENTRE O SISTEMA E O BANCO DE DADOS*/
     }
 }
