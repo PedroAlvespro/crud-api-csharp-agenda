@@ -12,14 +12,14 @@ namespace TRIMAPAPI.Repositories
     */
     public class ContatoRepository : IContatoRepository
     {
-        private readonly AgendaContext _context;
+        private readonly AgendaContext _context; //apenas leitura
 
         public ContatoRepository(AgendaContext context) //injeção de dependencia
         {
             _context = context;
         }
 
-        public async Task Create(Contato contato)
+        public async Task Create(Contato contato) 
         {
             _context.Contatos.Add(contato);
             await _context.SaveChangesAsync();
@@ -37,10 +37,18 @@ namespace TRIMAPAPI.Repositories
             await _context.SaveChangesAsync();
         }
        
-
         public async Task<Contato> GetByNameAsync(string nome)
         {
-        return await _context.Contatos.FirstOrDefaultAsync(c => c.Nome == nome);
+        var contato = await _context.Contatos.FirstOrDefaultAsync(c => c.Nome == nome);
+        return contato;
+         /*contato direto com o banco
+        await para esteira de espera, _context que é filho de, tendo em vista que irá mexer no nome, 
+        FirstOrDefaultAsync -> busca por nome, método de busca do .net no bd.
+        */
         }
+       
+
+        
+
     }
 }

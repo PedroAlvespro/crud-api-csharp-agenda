@@ -3,36 +3,37 @@ using Context;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
 using TRIMAPAPI.Services;
-
+/*Aqui fica a parte do CRUD, invocação de serviços, retorno de erros, rotas... etc*/
 namespace TRIMAPAPI.Controllers
 {
-    /*AQUI FICA A LÓGICA, OS COMPORTAMENTOS, AS FUNÇÕES QUE CADA ENDPOINT IRÁ EXECUTAR, SUA ROTA E SUA REQUISIÇÃO*/
 
     [ApiController]
     [Route("contato")]
     public class ContatoController : ControllerBase
     {
-        private readonly ContatoService _service;
+        private readonly ContatoService _service; /*variáveis, por fins de segurança, privadas
+        apenas de leitura, objetos de suas respectivas classes*/
         private readonly AgendaContext _context;
 
-        public ContatoController(ContatoService service, AgendaContext context)
+        public ContatoController(ContatoService service, AgendaContext context) /*Construtor da classe*/
         {
             _service = service;
             _context = context;
         }
 
+       
 
-        [HttpGet("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        [HttpGet("{id:int}")] 
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public async Task<ActionResult> Get(int id)
+        public async Task<ActionResult> Get(int id) 
         {
             try
             {
                 var contato = await _service.GetContato(id);
-
                 if (contato is null) NotFound();
 
                 return Ok(contato);
@@ -43,18 +44,15 @@ namespace TRIMAPAPI.Controllers
             }
         }
 
-        [HttpGet("ObterPorNome")]
-        public async Task<IActionResult> NomeGet(string nome)
-        {
-            var contato = await _service.NomeGet(nome);
-
-            if (contato == null)
-            {
-                return NotFound(); // Retorna 404 se o contato não for encontrado
-            }
-
-            return Ok(contato); // Retorna 200 e o contato encontrado
-        }
+        [HttpGet("ObterPorNome")] /*verbo http*/
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+       public async Task<ActionResult> GetByNameAsync(string nome)
+       {
+            if(nome is null) return NotFound();
+            var contato = await _service.GetByNameAsync(nome);
+            return Ok(contato);
+       }
 
         [HttpPost("{nome}/{telefone}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
@@ -84,7 +82,7 @@ namespace TRIMAPAPI.Controllers
             try
             {
                 var deletado = await _service.Delete(id);
-                if (!deletado) return NotFound();
+                if (!deletado) return NotFound(); //if sujo
                 return NoContent();
             }
             catch (Exception ex)
@@ -93,24 +91,6 @@ namespace TRIMAPAPI.Controllers
             }
         }
 
-        [HttpDelete("delete2/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
-        public async Task<ActionResult> Delete2(int id)
-        {
-            try
-            {
-                var contato  = _context.Contatos.Find(id);
-                if (contato is null ) return NotFound();
-                _context.Contatos.Remove(contato);
-                return NoContent();
-            } 
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
-            }
-        }
     }
 
 

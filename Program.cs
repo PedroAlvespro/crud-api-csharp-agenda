@@ -34,6 +34,5 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
-
+app.MapControllers(); /*mapeamento, para que saiba onde estão os controllers*/
 app.Run();

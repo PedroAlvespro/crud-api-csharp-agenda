@@ -1,13 +1,16 @@
 using Entities;
 using TRIMAPAPI.Repositories.Interfaces;
-
+/*Aqui está a lógica, diferentemente do repository, que tem por objetivo
+ter o contato direto com o banco de dado, o services tem os serviços
+baseados no contato direto do repository. Então é mais uma camada de abstração.*/
 namespace TRIMAPAPI.Services
 {
     public class ContatoService
     {
-        private readonly IContatoRepository _repository;
+        private readonly IContatoRepository _repository; /*objeto de Icontatorepository*/
 
-        public ContatoService(IContatoRepository repository)
+        public ContatoService(IContatoRepository repository) /*construtor que recebe uma variável para instanciar
+        as interfaces*/
         {
             _repository = repository;
         }
@@ -44,9 +47,10 @@ namespace TRIMAPAPI.Services
 
             return true;
         }
-    public async Task<Contato> NomeGet(string nome)
+    
+    public async Task<Contato> GetByNameAsync(string nome)
     {
-        if (string.IsNullOrWhiteSpace(nome))
+          if (string.IsNullOrWhiteSpace(nome))
         {
             throw new ArgumentException("O nome não pode ser nulo ou vazio.", nameof(nome));
         }
@@ -57,5 +61,7 @@ namespace TRIMAPAPI.Services
         }
         return contato; 
     }
+
+
     }
 }

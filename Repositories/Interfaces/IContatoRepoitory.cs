@@ -7,7 +7,6 @@ namespace TRIMAPAPI.Repositories.Interfaces
         public Task Create(Contato contato);
         public Task<Contato> Get(int id);
         public Task Delete(Contato contato);
-        public Task<Contato> GetByNameAsync(string nome);
-    
+        public Task<Contato> GetByNameAsync(string nome); /*interface*/
     }
 }
