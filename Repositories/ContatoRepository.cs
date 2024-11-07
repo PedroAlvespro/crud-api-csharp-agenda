@@ -7,14 +7,12 @@ using TRIMAPAPI.Repositories.Interfaces;
 
 namespace TRIMAPAPI.Repositories
 {
-    /*CAMADA ENTRE O DBCONTEXT E OS CONTROLLERS, AQUI FICAM ARMAZENADOS AS INTERFACES E SEPARAÇÃO
-      ENTRE LÓGICA DE DADOS E LÓGICA DE NEGÓCIOS.
-    */
+
     public class ContatoRepository : IContatoRepository
     {
-        private readonly AgendaContext _context; //apenas leitura
+        private readonly AgendaContext _context; 
 
-        public ContatoRepository(AgendaContext context) //injeção de dependencia
+        public ContatoRepository(AgendaContext context) 
         {
             _context = context;
         }
@@ -39,16 +37,16 @@ namespace TRIMAPAPI.Repositories
        
         public async Task<Contato> GetByNameAsync(string nome)
         {
-        var contato = await _context.Contatos.FirstOrDefaultAsync(c => c.Nome == nome);
+        var contato = await _context.Contatos.FirstOrDefaultAsync(c => c.Nome == nome && c.Ativo == true);
+        var contato2 = _context.Contatos.Where(c => c.Nome.Contains(nome) && c.Ativo == true).ToList();
         return contato;
-         /*contato direto com o banco
-        await para esteira de espera, _context que é filho de, tendo em vista que irá mexer no nome, 
-        FirstOrDefaultAsync -> busca por nome, método de busca do .net no bd.
-        */
         }
-       
-
         
+        public async Task<List<Contato>> GetListarTodosContatos()
+        {
+            var contato = await _context.Contatos.ToListAsync(); //ToListAsyn() retorna todos os contatos
+            return contato;
+        }
 
     }
 }

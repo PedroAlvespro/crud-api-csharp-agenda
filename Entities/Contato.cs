@@ -1,12 +1,12 @@
 
 namespace Entities
 {
-    public class Contato //espelho pra um bd
+    public class Contato
     {
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public bool Ativo { get; set; }
-        /*AQUI SÃO DEFINIDOS OS MODELOS, ESTRUTURAS E TALS*/
+        
     }
 }

@@ -1,16 +1,13 @@
 using Entities;
 using TRIMAPAPI.Repositories.Interfaces;
-/*Aqui está a lógica, diferentemente do repository, que tem por objetivo
-ter o contato direto com o banco de dado, o services tem os serviços
-baseados no contato direto do repository. Então é mais uma camada de abstração.*/
+
 namespace TRIMAPAPI.Services
 {
     public class ContatoService
     {
-        private readonly IContatoRepository _repository; /*objeto de Icontatorepository*/
+        private readonly IContatoRepository _repository; 
 
-        public ContatoService(IContatoRepository repository) /*construtor que recebe uma variável para instanciar
-        as interfaces*/
+        public ContatoService(IContatoRepository repository) 
         {
             _repository = repository;
         }
@@ -34,8 +31,6 @@ namespace TRIMAPAPI.Services
 
             return contato;
         }
-
-
           public async Task<bool> Delete(int id)
         {
 
@@ -47,21 +42,25 @@ namespace TRIMAPAPI.Services
 
             return true;
         }
-    
-    public async Task<Contato> GetByNameAsync(string nome)
-    {
-          if (string.IsNullOrWhiteSpace(nome))
+        public async Task<Contato> GetByNameAsync(string nome)
         {
-            throw new ArgumentException("O nome não pode ser nulo ou vazio.", nameof(nome));
+            if (string.IsNullOrWhiteSpace(nome))
+            {
+                throw new ArgumentException("O nome não pode ser nulo ou vazio.", nameof(nome));
+            }
+            var contato = await _repository.GetByNameAsync(nome);
+            if (contato == null)
+            {
+                throw new KeyNotFoundException($"Contato com o nome '{nome}' não encontrado.");
+            }
+            return contato; 
         }
-        var contato = await _repository.GetByNameAsync(nome);
-        if (contato == null)
-        {
-            throw new KeyNotFoundException($"Contato com o nome '{nome}' não encontrado.");
-        }
-        return contato; 
-    }
 
+       public async Task<List<Contato>> GetListarTodosContato()
+        {
+            var contatos = await _repository.GetListarTodosContatos() ?? new List<Contato>();
+            return contatos;
+        }
 
     }
 }
