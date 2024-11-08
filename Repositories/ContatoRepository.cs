@@ -48,5 +48,13 @@ namespace TRIMAPAPI.Repositories
             return contato;
         }
 
+        /*usando expressões lambda*/
+        public async Task<List<Contato>> GetListarTodosContatosLambda()
+        {
+            return await _context.Contatos
+                    .Select (c => c)
+                    .ToListAsync();
+        }
+
     }
 }

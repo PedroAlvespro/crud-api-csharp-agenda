@@ -61,6 +61,11 @@ namespace TRIMAPAPI.Services
             var contatos = await _repository.GetListarTodosContatos() ?? new List<Contato>();
             return contatos;
         }
+        public async Task<List<Contato>> GetListarTodosContatosLambda()
+        {
+            var lista = await _repository.GetListarTodosContatosLambda();
+            return lista;
+        }
 
     }
 }

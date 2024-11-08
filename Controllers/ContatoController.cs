@@ -62,7 +62,7 @@ namespace TRIMAPAPI.Controllers
 
              
 
-
+       
         [HttpPost("{nome}/{telefone}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -97,6 +97,17 @@ namespace TRIMAPAPI.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex);
             }
         }
+
+        [HttpGet("obtertodoslista")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
+        public async Task<IActionResult> GetListarTodosContatosLambda()
+        {
+            var listaa = await _service.GetListarTodosContatosLambda();
+            return Ok(listaa);
+        }
+
 
     }
 

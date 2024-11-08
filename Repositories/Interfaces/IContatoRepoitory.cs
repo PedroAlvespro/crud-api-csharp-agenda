@@ -10,6 +10,7 @@ namespace TRIMAPAPI.Repositories.Interfaces
         public Task Delete(Contato contato);
         public Task<Contato> GetByNameAsync(string nome); 
         public Task<List<Contato>> GetListarTodosContatos();
+        public Task<List<Contato>> GetListarTodosContatosLambda();
         
     }
 }
