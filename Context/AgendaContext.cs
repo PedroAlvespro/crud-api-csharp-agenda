@@ -13,6 +13,7 @@ namespace Context
         public AgendaContext(DbContextOptions<AgendaContext> options) : base(options)
         {
         }
-        public DbSet<Contato> Contatos{ get; set; } 
+
+        public DbSet<Contato> Contatos{ get; set; } //tabela contato
     }
 }

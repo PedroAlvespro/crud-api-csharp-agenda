@@ -52,7 +52,7 @@ namespace TRIMAPAPI.Repositories
         public async Task<List<Contato>> GetListarTodosContatosLambda()
         {
             return await _context.Contatos
-                    .Select (c => c)
+                    .Where(b => b != null)
                     .ToListAsync();
         }
 

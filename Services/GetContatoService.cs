@@ -34,7 +34,7 @@ namespace TRIMAPAPI.Services
           public async Task<bool> Delete(int id)
         {
 
-            var contato = await GetContato(id);  //retonro de código await - task
+            var contato = await GetContato(id); 
             
             if(contato == null) return false;
 

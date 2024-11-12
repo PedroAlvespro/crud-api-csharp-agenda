@@ -1,5 +1,6 @@
 using Context;
 using Microsoft.EntityFrameworkCore;
+using TRIMAPAPI.Context;
 using TRIMAPAPI.Repositories;
 using TRIMAPAPI.Repositories.Interfaces;
 using TRIMAPAPI.Services;
@@ -16,9 +17,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<LinhaContext>(option  =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadraoLinha"));
+});
+
 builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
 
 builder.Services.AddScoped<ContatoService>(); //DI - Adicionando no Scopo novas instâncias de Contato
+
+// Registrar o repositório no DI
+builder.Services.AddScoped<ILinhaRepository, LinhaRepository>();
+
+// Registrar o serviço no DI
+builder.Services.AddScoped<LinhaService>();
 
 
 var app = builder.Build();
