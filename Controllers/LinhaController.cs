@@ -61,6 +61,13 @@ namespace TRIMAPAPI.Controllers
         return Ok(linha);
     }
 
+    [HttpGet("listar_todas_as_linhas")]
+
+    public async Task<IActionResult> ListaLinha()
+    {
+        var allrow = await _linhaservice.ListaLinha();
+        return Ok(allrow);
+    }
 
 
 

@@ -39,6 +39,10 @@ namespace TRIMAPAPI.Services
             return row;
         }
 
-        
+        public async Task<List<Linha>> ListaLinha()
+        {
+            var allrow = await _linhaservice.GetListarLinha();
+            return allrow;
+        }        
     }
 }
