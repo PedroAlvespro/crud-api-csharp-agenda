@@ -2,6 +2,7 @@ using System.Net;
 using Context;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
+using TRIMAPAPI.Entities.Dto;
 using TRIMAPAPI.Services;
 
 namespace TRIMAPAPI.Controllers
@@ -58,15 +59,13 @@ namespace TRIMAPAPI.Controllers
             var contat = await _service.GetListarTodosContato();
             if(contat == null) return BadRequest("contato é nulo");
             return Ok(contat);
-        }
-
-             
+        }        
 
        
         [HttpPost("{nome}/{telefone}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Get(string nome, string telefone)
+        public async Task<ActionResult> AddDado(string nome, string telefone)
         {
             try
             {

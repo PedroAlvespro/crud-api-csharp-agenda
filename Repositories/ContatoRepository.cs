@@ -17,10 +17,11 @@ namespace TRIMAPAPI.Repositories
             _context = context;
         }
 
+
         public async Task Create(Contato contato) 
         {
-            _context.Contatos.Add(contato);
-            await _context.SaveChangesAsync();
+           _context.Contatos.Add(contato); //Contatos representeando a tabela do bd
+           await _context.SaveChangesAsync();
         }
 
         public async Task<Contato> Get(int id)

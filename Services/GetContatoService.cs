@@ -18,19 +18,18 @@ namespace TRIMAPAPI.Services
             return contato;
         }
 
-         public async Task<Contato> Create(string nome, string telefone)
+        public async Task<Contato> Create(string nome, string telefone)
+       {
+        var contato = new Contato()
         {
-            var contato = new Contato()
-            {
-                Nome = nome,
-                Telefone = telefone,
-                Ativo = true
-            };
+            Nome = nome,
+            Telefone = telefone,
+            Ativo = true
+        };
+        await _repository.Create(contato);
+        return contato;
+       }
 
-            await _repository.Create(contato);
-
-            return contato;
-        }
           public async Task<bool> Delete(int id)
         {
 

@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AgendaContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
+ 
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -28,6 +29,7 @@ builder.Services.AddScoped<ContatoService>(); //DI - Adicionando no Scopo novas 
 
 // Registrar o repositório no DI
 builder.Services.AddScoped<ILinhaRepository, LinhaRepository>();
+
 
 // Registrar o serviço no DI
 builder.Services.AddScoped<LinhaService>();
