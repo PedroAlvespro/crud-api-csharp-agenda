@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AgendaContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
- 
+//adicionar o Jwt
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

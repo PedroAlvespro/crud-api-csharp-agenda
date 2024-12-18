@@ -87,3 +87,4 @@ C:\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Runtime.C
 C:\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\APINETSIX\TRIMAPAPI\obj\Debug\net6.0\TRIMAPAPI.sourcelink.json
+C:\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\Microsoft.Bcl.TimeProvider.dll

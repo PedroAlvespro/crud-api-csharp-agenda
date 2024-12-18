@@ -2,7 +2,6 @@ using System.Net;
 using Context;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
-using TRIMAPAPI.Entities.Dto;
 using TRIMAPAPI.Services;
 
 namespace TRIMAPAPI.Controllers
