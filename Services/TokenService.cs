@@ -1,4 +1,3 @@
-
 using System.IdentityModel.Tokens.Jwt;  
 using System.Security.Claims;  
 using System.Text;  
@@ -9,6 +8,8 @@ namespace TRIMAPAPI.Services
 {  
     public class TokenService  
     {  
+        
+        //classe geradora de token
         public static string GenerateToken(Contato contat)  
         {  
             // Chama a chave privada  
@@ -19,6 +20,7 @@ namespace TRIMAPAPI.Services
                 {  
                     new Claim("id", contat.Id.ToString()),  
                 }),  
+
                 Expires = DateTime.UtcNow.AddHours(3),  
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) // Fixed the issue here  
             };   

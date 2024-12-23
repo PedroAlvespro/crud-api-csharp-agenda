@@ -7,6 +7,7 @@ namespace TRIMAPAPI
 {
     public class Key
     {
+        //chave secreta na doida
         public static String Secret = "7451254124512r456324353tfsdaergt";
 
     }
