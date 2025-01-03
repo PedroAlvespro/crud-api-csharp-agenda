@@ -9,7 +9,6 @@ namespace TRIMAPAPI.Services
     public class TokenService  
     {  
         
-        //classe geradora de token
         public static string GenerateToken(Contato contat)  
         {  
             // Chama a chave privada  
