@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using TRIMAPAPI.Services;
 
 namespace TRIMAPAPI.Controllers
-{
-
+{          
+        //indica a versao que está 
+        [ApiVersion("1.0")]
         [ApiController]
         [Route("contato")]
         public class ContatoController : ControllerBase

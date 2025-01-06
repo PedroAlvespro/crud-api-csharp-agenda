@@ -1,6 +1,7 @@
 using System.Text;
 using Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.WebEncoders.Testing;
 using Microsoft.IdentityModel.Tokens;
@@ -22,14 +23,21 @@ builder.Services.AddDbContext<AgendaContext>(options =>
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApiVersioning(options =>
+{
+    options.AssumeDefaultVersionWhenUnspecified = true; // Define a versão padrão se nenhuma for especificada
+    options.DefaultApiVersion = new ApiVersion(1, 0);    // Define a versão padrão como 1.0
+    options.ReportApiVersions = true;                   // Inclui informações de versão na resposta do cabeçalho
+});
+
 
 builder.Services.AddDbContext<LinhaContext>(option  =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadraoLinha"));
 });
-
-
 
 
 // Adicione a autorização
@@ -48,14 +56,13 @@ builder.Services.AddScoped<LinhaService>();
 
 
 var app = builder.Build();
+// mapping do token, também para testar via terminal no ou debug.
 app.MapGet("/", (TokenService service) 
     => service.GerarTokenUsuario(new Users(1, 
     "TestEncoder@gmail.com",
     "1321",
     "student", // Adiciona o parâmetro 'Roles'
     new[] { "student", "premium" })));
-
-
 
 
 // Configure the HTTP request pipeline.
