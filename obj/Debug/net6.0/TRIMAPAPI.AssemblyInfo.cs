@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TRIMAPAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09434fe0675b4142ff46e4d4d91281173d4e4943")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+824f8bd1afe7cb9a03829ef152863e267009173a")]
 [assembly: System.Reflection.AssemblyProductAttribute("TRIMAPAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TRIMAPAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
