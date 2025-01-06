@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GIjc0RPuP2o=",
+  "dgSpecHash": "eAxnqGnYot4=",
   "success": true,
-  "projectFilePath": "c:\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
+  "projectFilePath": "C:\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
