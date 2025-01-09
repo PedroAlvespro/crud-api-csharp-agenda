@@ -1,4 +1,5 @@
 using Entities;
+using TRIMAPAPI.Entities.Dto;
 using TRIMAPAPI.Repositories.Interfaces;
 
 namespace TRIMAPAPI.Services
@@ -16,6 +17,14 @@ namespace TRIMAPAPI.Services
         {
             var contato = await _repository.Get(id);
             return contato;
+        }
+
+        /*dto*/
+        public async Task<ContatoDto> GetContatoDto(int id)
+        {
+            var contatoDto  = await _repository.GetDto(id);
+            
+            return contatoDto;
         }
 
         public async Task<Contato> Create(string nome, string telefone)

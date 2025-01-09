@@ -1,4 +1,5 @@
 using Entities;
+using TRIMAPAPI.Entities.Dto;
 
 namespace TRIMAPAPI.Repositories.Interfaces
 {
@@ -7,6 +8,7 @@ namespace TRIMAPAPI.Repositories.Interfaces
  
         public Task Create(Contato contato);
         public Task<Contato> Get(int id);
+        public Task<ContatoDto> GetDto(int id);
         public Task Delete(Contato contato);
         public Task<Contato> GetByNameAsync(string nome); 
         public Task<List<Contato>> GetListarTodosContatos();

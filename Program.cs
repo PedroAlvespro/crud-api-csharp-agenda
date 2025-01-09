@@ -12,6 +12,7 @@ using TRIMAPAPI.Repositories.Interfaces;
 using TRIMAPAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddTransient<TokenService>();
 
 // Add services to the container.
@@ -56,6 +57,10 @@ builder.Services.AddScoped<LinhaService>();
 
 
 var app = builder.Build();
+
+app.UseApiVersioning(); 
+
+
 // mapping do token, também para testar via terminal no ou debug.
 app.MapGet("/", (TokenService service) 
     => service.GerarTokenUsuario(new Users(1, 
@@ -74,11 +79,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
 app.MapControllers(); /*mapeamento, para que saiba onde estão os controllers*/
+
 app.Run();
 
 // No método `app.Use` para middleware (normalmente em Program.cs ou Startup.cs)
 app.UseAuthentication();
-app.UseAuthorization();

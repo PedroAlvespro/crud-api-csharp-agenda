@@ -9,7 +9,7 @@ namespace TRIMAPAPI.Controllers
         //indica a versao que está 
         [ApiVersion("1.0")]
         [ApiController]
-        [Route("contato")]
+        [Route("contato/v{version:apiVersion}")]
         public class ContatoController : ControllerBase
         {
         private readonly ContatoService _service; 
@@ -21,7 +21,7 @@ namespace TRIMAPAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("{id:int}")] 
+        [HttpGet(" ")] 
         [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -31,7 +31,7 @@ namespace TRIMAPAPI.Controllers
             try
             {
                 var contato = await _service.GetContato(id);
-                if (contato is null) NotFound();
+                if (contato is null)  return NotFound();
 
                 return Ok(contato);
             }
@@ -40,6 +40,26 @@ namespace TRIMAPAPI.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex);
             }
         }
+
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task <IActionResult> GetDto(int id)
+        {
+            try
+            {
+                var contatoDto = await _service.GetContatoDto(id);
+                if(contatoDto is null) return BadRequest("nao deu");
+
+                return Ok(contatoDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+            }
+        }
+
 
         [HttpGet("por_nome")] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
