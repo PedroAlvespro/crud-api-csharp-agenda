@@ -3222,11 +3222,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
+      "projectUniqueName": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
       "projectName": "TRIMAPAPI",
-      "projectPath": "C:\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
+      "projectPath": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
       "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-      "outputPath": "C:\\APINETSIX\\TRIMAPAPI\\obj\\",
+      "outputPath": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
