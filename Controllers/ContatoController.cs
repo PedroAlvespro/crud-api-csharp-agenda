@@ -84,6 +84,8 @@ namespace TRIMAPAPI.Controllers
 
         
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Update(int id, [FromBody] ContatoDto contatoDto)
         {
             try
