@@ -39,7 +39,18 @@ namespace TRIMAPAPI.Services
         return contato;
        }
 
-          public async Task<bool> Delete(int id)
+       public async Task<Contato> UpdateContato(int id, string nome, string telefone)
+       {
+        var atualizado = await _repository.Get(id);
+        if(atualizado == null || atualizado is null) throw new KeyNotFoundException("Contato não encontrado.");
+        atualizado.Nome = nome;
+        atualizado.Telefone = telefone;
+
+        await _repository.UpdateContato(atualizado);
+        return atualizado;
+       }
+
+        public async Task<bool> Delete(int id)
         {
             var contato = await GetContato(id); 
             

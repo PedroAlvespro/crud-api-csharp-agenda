@@ -73,6 +73,10 @@ namespace TRIMAPAPI.Repositories
                     .ToListAsync();
         }
 
-       
+        public async Task UpdateContato(Contato contato)
+        {
+             _context.Contatos.Update(contato);
+            await _context.SaveChangesAsync();        
+        }
     }
 }

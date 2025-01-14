@@ -2,6 +2,7 @@ using System.Net;
 using Context;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
+using TRIMAPAPI.Entities.Dto;
 using TRIMAPAPI.Services;
 
 namespace TRIMAPAPI.Controllers
@@ -80,6 +81,25 @@ namespace TRIMAPAPI.Controllers
             if(contat == null) return BadRequest("contato é nulo");
             return Ok(contat);
         }        
+
+        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] ContatoDto contatoDto)
+        {
+            try
+            {
+                var contatoAtualizado = await _service.UpdateContato(id, contatoDto.Nome, contatoDto.Telefone);
+                return Ok(contatoAtualizado);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Erro ao atualizar o contato.");
+            }
+        }
 
        
         [HttpPost("{nome}/{telefone}")]
