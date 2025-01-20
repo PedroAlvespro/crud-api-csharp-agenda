@@ -63,6 +63,7 @@ namespace TRIMAPAPI.Controllers
 
 
         [HttpGet("por_nome")] 
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
        public async Task<ActionResult> GetByNameAsync(string nome)
@@ -73,6 +74,7 @@ namespace TRIMAPAPI.Controllers
        }
        
         [HttpGet("todos_os_contatos")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetListarTodosContato()
@@ -84,6 +86,7 @@ namespace TRIMAPAPI.Controllers
 
         
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Update(int id, [FromBody] ContatoDto contatoDto)
@@ -105,6 +108,7 @@ namespace TRIMAPAPI.Controllers
 
        
         [HttpPost("{nome}/{telefone}")]
+       [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> AddDado(string nome, string telefone)
@@ -123,6 +127,7 @@ namespace TRIMAPAPI.Controllers
 
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> Delete(int id)
@@ -140,6 +145,7 @@ namespace TRIMAPAPI.Controllers
         }
 
         [HttpGet("obtertodoslista")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 

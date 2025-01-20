@@ -48,6 +48,8 @@ namespace TRIMAPAPI.Controllers
     }
 
     [HttpDelete("por_id")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Linha))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> RemovePorId(int id)
     {
         var linha = await _linhaService.GetTel(id);
@@ -58,6 +60,8 @@ namespace TRIMAPAPI.Controllers
     }
 
     [HttpGet("all")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Linha))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
     public async Task<IActionResult> ListaLinha()
     {
@@ -65,6 +69,20 @@ namespace TRIMAPAPI.Controllers
         return Ok(allrow);
     }
 
+    [HttpGet("por_id_existencial")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Linha))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
+    public async Task<IActionResult> LinhaAtivadaC(int id)
+    {
+        try
+        {
+            var linha = await _linhaService.AtivoLinhaVerify(id);
+            return Ok(linha);
+        } catch (Exception ex)
+        {
+            return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+        }
+    }
     }
 }

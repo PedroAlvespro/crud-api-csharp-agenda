@@ -11,6 +11,14 @@ namespace TRIMAPAPI.Repositories.Interfaces
         {
             _contextLinha = context; //chamada do contexto no construtor da classe
         }
+
+        public async Task<bool> AtivoLinha(int id)
+        {
+            var linha = await _contextLinha.Linha.FindAsync(id);
+            if(linha is null) return false;
+            return true;
+        }
+
         public async Task Create (Linha linha) //usa assícrono para thread
         {
             _contextLinha.Linha.Add(linha); //pegue do contexto o modelo linha e adicione uma linha

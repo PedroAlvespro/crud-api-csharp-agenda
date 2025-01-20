@@ -1,5 +1,5 @@
 
 namespace TRIMAPAPI.recordsUser
 {
-    public record Users(int Id, object testEncoder, string Email, string Password, string []Roles);
+    public record Users(int Id, object TestEncoder, string Email, string Password, string []Roles);
 }

@@ -14,7 +14,7 @@ namespace TRIMAPAPI.Services
             _linhaRepository = linhaRepository;
         }
 
-        public async Task<Linha> CreateS(string nomelinha, Boolean ativolinha)
+        public async Task<Linha> CreateS(string nomelinha, Boolean Ativo)
         {
             var linha = new Linha ()
             {
@@ -43,6 +43,18 @@ namespace TRIMAPAPI.Services
         {
             var allrow = await _linhaRepository.GetListarLinha();
             return allrow;
-        }        
+        } 
+
+        public async Task<Linha> AtivoLinhaVerify(int id)
+        {
+            //primeiro, coloquei uma variávle ativa para verificar se a linha existia
+            //segundo, após verificar a existência de uma linha, coloquei um getlinha, buscando pelo mesmo id
+            var isAtivo = await _linhaRepository.AtivoLinha(id);
+            if(isAtivo){
+                var linhaAtiva = await _linhaRepository.GetLinha(id);
+                return linhaAtiva;
+            }
+            return null;
+        }      
     }
 }

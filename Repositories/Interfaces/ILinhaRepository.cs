@@ -11,6 +11,7 @@ namespace TRIMAPAPI.Repositories.Interfaces
         public Task Create(Linha linha);
         public Task<List<Linha>> GetListarLinha();
         public Task<Linha> GetLinha(int id);
+        public Task<bool> AtivoLinha (int id);
         public Task RemoveLinha(Linha linha);
     }
 }
