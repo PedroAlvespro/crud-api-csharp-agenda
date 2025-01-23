@@ -1,7 +1,7 @@
 using Entities;
+using Microsoft.AspNetCore.Mvc;
 using TRIMAPAPI.Entities.Dto;
 using TRIMAPAPI.Repositories.Interfaces;
-
 namespace TRIMAPAPI.Services
 {
     public class ContatoService
@@ -76,8 +76,14 @@ namespace TRIMAPAPI.Services
 
        public async Task<List<Contato>> GetListarTodosContato()
         {
-            var contatos = await _repository.GetListarTodosContatos() ?? new List<Contato>();
-            return contatos;
+                var contatos = await _repository.GetListarTodosContatos() ?? new List<Contato>();
+
+
+                //instanciando diretamente, coisa permitida, devido a classe ser estática.
+                TRIMAPAPI.Log.Log.LogToFile(nameof(GetListarTodosContato), "Lista obtida com sucesso.");
+                
+                return contatos;
+
         }
         public async Task<List<Contato>> GetListarTodosContatosLambda()
         {
