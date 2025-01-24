@@ -64,15 +64,6 @@ namespace TRIMAPAPI.Repositories
             var contato = await _context.Contatos.ToListAsync(); //ToListAsyn() retorna todos os contatos
             return contato;
         }
-
-        /*usando expressões lambda*/
-        public async Task<List<Contato>> GetListarTodosContatosLambda()
-        {
-            return await _context.Contatos
-                    .Where(b => b != null)
-                    .ToListAsync();
-        }
-
         public async Task UpdateContato(Contato contato)
         {
              _context.Contatos.Update(contato);
