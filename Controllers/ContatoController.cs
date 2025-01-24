@@ -144,18 +144,6 @@ namespace TRIMAPAPI.Controllers
             }
         }
 
-        [HttpGet("obtertodoslista")]
-        [ProducesResponseType(StatusCodes.Status404NotFound)] 
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
-        public async Task<IActionResult> GetListarTodosContatosLambda()
-        {
-            var listaa = await _service.GetListarTodosContatosLambda();
-            return Ok(listaa);
-        }
-
-
     }
 
 

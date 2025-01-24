@@ -98,6 +98,8 @@ C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\TRIMAPAPI.deps.json
 C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\TRIMAPAPI.runtimeconfig.json
 C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\TRIMAPAPI.dll
 C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\TRIMAPAPI.pdb
+C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\AutoMapper.dll
+C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\Azure.Core.dll
 C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\Azure.Identity.dll
 C:\SysWeb\APINETSIX\TRIMAPAPI\bin\Debug\net6.0\Humanizer.dll

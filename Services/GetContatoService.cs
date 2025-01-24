@@ -12,11 +12,21 @@ namespace TRIMAPAPI.Services
         {
             _repository = repository;
         }
-
         public async Task<Contato> GetContato(int id)
         {
-            var contato = await _repository.Get(id);
-            return contato;
+            if(id < 0) throw new ArgumentException("o Id nao pode ser menor que 0");
+            try
+            {
+               var contato = await _repository.Get(id);
+               
+               if(contato is null) Log.Log.LogToFile(nameof(GetContato), $"Erro, contato nulo");
+                return contato;
+            } 
+            catch (Exception ex)
+            {
+                Log.Log.LogToFile(nameof(GetContato), $"Erro, contato não obtido, {ex.Message}");
+                throw;
+            }
         }
 
         /*dto*/
@@ -31,70 +41,124 @@ namespace TRIMAPAPI.Services
             }
             catch (Exception ex)
             {
-             Log.Log.LogToFile(nameof(GetContatoDto), $"Erro, lista nao obtida {ex.Message}");
+                 Log.Log.LogToFile(nameof(GetContatoDto), $"Erro, lista nao obtida {ex.Message}");
                 throw;
             }
         }
 
         public async Task<Contato> Create(string nome, string telefone)
-       {
+        {
+        try
+        {
         var contato = new Contato()
         {
             Nome = nome,
             Telefone = telefone,
             Ativo = true
         };
+
+        if(contato is null) throw new ArgumentException("Erro, contato nulo");
+
+        Log.Log.LogToFile(nameof(Create),"Contato criado com sucesso !");
+
         await _repository.Create(contato);
         return contato;
-       }
+
+        }
+        catch (Exception ex)
+        {
+            Log.Log.LogToFile(nameof(Create), $" Erro, contato não criado,{ex.Message}");
+            throw;
+        }
+        }
 
        public async Task<Contato> UpdateContato(int id, string nome, string telefone)
        {
-        var atualizado = await _repository.Get(id);
-        if(atualizado == null || atualizado is null) throw new KeyNotFoundException("Contato não encontrado.");
-        atualizado.Nome = nome;
-        atualizado.Telefone = telefone;
 
-        await _repository.UpdateContato(atualizado);
-        return atualizado;
+        try 
+        {
+          
+            var atualizado = await _repository.Get(id);
+            
+            if(atualizado is null)
+            {
+                Log.Log.LogToFile(nameof(UpdateContato), "Contato não atualizado ");
+            }
+
+            atualizado.Nome = nome;
+            atualizado.Telefone = telefone;
+
+            Log.Log.LogToFile(nameof(UpdateContato), "Contato Atualizado com sucesso");
+
+            await _repository.UpdateContato(atualizado);
+
+            return atualizado;
+        }
+        catch (Exception ex)
+        {
+            Log.Log.LogToFile(nameof(UpdateContato), $"Erro, Contato nao atualizado{ex.Message}");
+            throw; //lança o erro
+        }
        }
-
         public async Task<bool> Delete(int id)
         {
-            var contato = await GetContato(id); 
+            if(id < 0) throw new ArgumentException("Erro, o id nao pode ser menor do que 0");
+            try
+            {
+                var contato = await GetContato(id); 
             
-            if(contato == null) return false;
+                if(contato == null) Log.Log.LogToFile(nameof(Delete), "Erro, null");
+                Log.Log.LogToFile(nameof(Delete), "Ok, Deletado com sucesso.");
+            
+                await _repository.Delete(contato);
 
-            await _repository.Delete(contato);
-
-            return true;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Log.LogToFile(nameof(Delete), $"Erro, contato nao deletado {ex.Message}");
+                throw;
+            }
+            
         }
         public async Task<Contato> GetByNameAsync(string nome)
         {
-            if (string.IsNullOrWhiteSpace(nome))
+            if (string.IsNullOrWhiteSpace(nome)) throw new ArgumentException("O nome não pode ser nulo ou vazio.", nameof(nome));
+           
+            try
             {
-                throw new ArgumentException("O nome não pode ser nulo ou vazio.", nameof(nome));
-            }
             var contato = await _repository.GetByNameAsync(nome);
-            if (contato == null)
-            {
-                throw new KeyNotFoundException($"Contato com o nome '{nome}' não encontrado.");
-            }
+            
+            if (contato == null) Log.Log.LogToFile(nameof(GetByNameAsync), "Erro, contato nulo");
+            
+            Log.Log.LogToFile(nameof(GetByNameAsync), "Ok, Contato obtido com sucesso.");
+            
             return contato; 
+            } 
+            catch (Exception ex)
+            {
+                Log.Log.LogToFile(nameof(GetByNameAsync), $"Erro, contato nao obtido{ex.Message}");
+                throw;
+            }   
+            
         }
 
        public async Task<List<Contato>> GetListarTodosContato()
         {
+            try
+            {
                 var contatos = await _repository.GetListarTodosContatos() ?? new List<Contato>();
-                //instanciando diretamente, coisa permitida, devido a classe ser estática.
-                Log.Log.LogToFile(nameof(GetListarTodosContato), "Lista obtida com sucesso.");
-                return contatos;
-        }
-        public async Task<List<Contato>> GetListarTodosContatosLambda()
-        {
-            var lista = await _repository.GetListarTodosContatosLambda();
-            return lista;
-        }
 
+                Log.Log.LogToFile(nameof(GetListarTodosContato), "Lista obtida com sucesso.");
+
+                return contatos;
+            }
+            catch (Exception ex)
+            {
+                Log.Log.LogToFile(nameof(GetListarTodosContato), $"Erro, lista nao obtida, {ex.Message}");
+
+                throw;
+            }
+        }
     }
 }
