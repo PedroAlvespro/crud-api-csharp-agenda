@@ -51,6 +51,7 @@ builder.Services.AddScoped<ContatoService>(); //DI - Adicionando no Scopo novas 
 // Registrar o repositório no DI
 builder.Services.AddScoped<ILinhaRepository, LinhaRepository>();
 
+//registrando autoMapper
 
 // Registrar o serviço no DI
 builder.Services.AddScoped<LinhaService>();

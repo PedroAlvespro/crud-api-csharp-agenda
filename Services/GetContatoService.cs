@@ -22,9 +22,18 @@ namespace TRIMAPAPI.Services
         /*dto*/
         public async Task<ContatoDto> GetContatoDto(int id)
         {
-            var contatoDto  = await _repository.GetDto(id);
-            
-            return contatoDto;
+            if(id < 0) throw new ArgumentException("O id nao pode ser menor do que 0",nameof(id));
+            try
+            {
+                var contato = await _repository.GetDto(id);
+                if(contato is null || contato == null) Log.Log.LogToFile(nameof(GetContatoDto), "Lista não obtida.");
+                return contato;
+            }
+            catch (Exception ex)
+            {
+             Log.Log.LogToFile(nameof(GetContatoDto), $"Erro, lista nao obtida {ex.Message}");
+                throw;
+            }
         }
 
         public async Task<Contato> Create(string nome, string telefone)
@@ -77,13 +86,9 @@ namespace TRIMAPAPI.Services
        public async Task<List<Contato>> GetListarTodosContato()
         {
                 var contatos = await _repository.GetListarTodosContatos() ?? new List<Contato>();
-
-
                 //instanciando diretamente, coisa permitida, devido a classe ser estática.
-                TRIMAPAPI.Log.Log.LogToFile(nameof(GetListarTodosContato), "Lista obtida com sucesso.");
-                
+                Log.Log.LogToFile(nameof(GetListarTodosContato), "Lista obtida com sucesso.");
                 return contatos;
-
         }
         public async Task<List<Contato>> GetListarTodosContatosLambda()
         {
