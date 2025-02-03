@@ -62,15 +62,6 @@ var app = builder.Build();
 app.UseApiVersioning(); 
 
 
-// mapping do token, também para testar via terminal no ou debug.
-app.MapGet("/", (TokenService service) 
-    => service.GerarTokenUsuario(new Users(1, 
-    "TestEncoder@gmail.com",
-    "1321",
-    "student", // Adiciona o parâmetro 'Roles'
-    new[] { "student", "premium" })));
-
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

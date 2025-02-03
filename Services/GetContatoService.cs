@@ -28,8 +28,7 @@ namespace TRIMAPAPI.Services
                 throw;
             }
         }
-
-        /*dto*/
+         /*dto*/
         public async Task<ContatoDto> GetContatoDto(int id)
         {
             if(id < 0) throw new ArgumentException("O id nao pode ser menor do que 0",nameof(id));
