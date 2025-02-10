@@ -108,7 +108,7 @@ namespace TRIMAPAPI.Controllers
 
        
         [HttpPost("{nome}/{telefone}")]
-       [ProducesResponseType(StatusCodes.Status404NotFound)] 
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> AddDado(string nome, string telefone)
