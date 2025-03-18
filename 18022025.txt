@@ -1,0 +1,6 @@
+Log:  
+terça-feira, 18 de março de 2025
+Titulo da Mensagem : GetListarTodosContato
+Titulo da Mensagem : Lista obtida com sucesso.
+------------------------------------------------------------------
+ 

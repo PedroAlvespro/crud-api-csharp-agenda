@@ -3282,11 +3282,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
+      "projectUniqueName": "C:\\SysWeb\\APINETSIX\\trimapapi\\TRIMAPAPI.csproj",
       "projectName": "TRIMAPAPI",
-      "projectPath": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
+      "projectPath": "C:\\SysWeb\\APINETSIX\\trimapapi\\TRIMAPAPI.csproj",
       "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-      "outputPath": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\obj\\",
+      "outputPath": "C:\\SysWeb\\APINETSIX\\trimapapi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3390,7 +3390,7 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 13.0.1 was resolved.",
+      "message": "Versão detectada do pacote fora da restrição de dependência: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requer AutoMapper (= 12.0.1), mas a versão AutoMapper 13.0.1 foi resolvida.",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net6.0"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj": {}
+    "C:\\SysWeb\\APINETSIX\\trimapapi\\TRIMAPAPI.csproj": {}
   },
   "projects": {
-    "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj": {
+    "C:\\SysWeb\\APINETSIX\\trimapapi\\TRIMAPAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
+        "projectUniqueName": "C:\\SysWeb\\APINETSIX\\trimapapi\\TRIMAPAPI.csproj",
         "projectName": "TRIMAPAPI",
-        "projectPath": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\TRIMAPAPI.csproj",
+        "projectPath": "C:\\SysWeb\\APINETSIX\\trimapapi\\TRIMAPAPI.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\SysWeb\\APINETSIX\\TRIMAPAPI\\obj\\",
+        "outputPath": "C:\\SysWeb\\APINETSIX\\trimapapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
