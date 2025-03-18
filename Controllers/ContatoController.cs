@@ -112,6 +112,7 @@ namespace TRIMAPAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Contato))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> AddDado(string nome, string telefone)
+        //FromBody, FromForm, ou nenhum ?
         {
             try
             {
